@@ -109,8 +109,11 @@ step-free), and **L3 sun-hours heatmap** (`sunHours.ts` — hourly window beam-c
 shadows, season presets via `plan.sunSeason` + a Display sub-control; `walkGrid.lightWalls`).
 **L4 budget/move-day** (`budget.ts` — per-room bill of materials from `price` + a new
 `owned` flag, still-to-buy total, volume→truck estimate, CSV export via a Stats button),
-and **L5 sightlines/privacy** (`sightlines.ts` — is the bed/toilet visible from the door/a
-window via `hasLineOfSight`; TV viewing distance vs screen size). Overlay primitives:
+**L5 sightlines/privacy** (`sightlines.ts` — is the bed/toilet visible from the door/a
+window via `hasLineOfSight`; TV viewing distance vs screen size), **L7 outlets/power**
+(`outlets.ts` — code-spaced wall outlets + extension-run flags for powered pieces), and
+**L8 layout-diff** (`layoutDiff.ts` — pin the layout as `plan.ghost`, ghost + move arrows).
+**All eight §9 layers now shipped.** Overlay primitives:
 polygon/rect/path/circle/badge. Add a layer = append to
 `lib/layers/registry.ts` (Display menu + Stats read-out wire up automatically); a layer that
 needs a control adds a plan field + a special-cased sub-control (ViewOptionsMenu, e.g. sun-hours)
