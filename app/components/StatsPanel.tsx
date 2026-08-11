@@ -39,6 +39,10 @@ export default function StatsPanel({ plan, setPlan, onClose, onSelectPiece }: Pr
     URL.revokeObjectURL(url)
   }
 
+  const pinGhost = () =>
+    setPlan((p) => ({ ...p, ghost: { rooms: JSON.parse(JSON.stringify(p.rooms)), furniture: JSON.parse(JSON.stringify(p.furniture)) } }))
+  const clearGhost = () => setPlan((p) => ({ ...p, ghost: undefined }))
+
   return (
     <div className="stats-panel">
       <div className="stats-head">
@@ -198,6 +202,18 @@ export default function StatsPanel({ plan, setPlan, onClose, onSelectPiece }: Pr
               <button className="btn-ghost" onClick={downloadBudgetCsv}>
                 ⬇ Download bill of materials (CSV)
               </button>
+            )}
+            {l.id === 'layout-diff' && (
+              <div className="seg full">
+                <button className="seg-btn" onClick={pinGhost}>
+                  📌 {plan.ghost ? 'Re-pin Plan B' : 'Pin current as Plan B'}
+                </button>
+                {plan.ghost && (
+                  <button className="seg-btn" onClick={clearGhost}>
+                    Clear
+                  </button>
+                )}
+              </div>
             )}
           </div>
         ))}

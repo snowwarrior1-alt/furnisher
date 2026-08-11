@@ -187,6 +187,7 @@ export interface Plan {
   clearance?: boolean // show too-narrow-walkway warnings between bulky furniture (default OFF — noisy)
   layers?: string[] // active insight-layer ids (lib/layers registry); default none
   sunSeason?: 'summer' | 'equinox' | 'winter' // season preset for the sun-hours layer (default equinox)
+  ghost?: { rooms: Room[]; furniture: Furniture[] } // pinned "Plan B" snapshot for the layout-diff layer (L8)
   budget?: number // optional spend target — Stats shows remaining / over-budget
   blueprintUrl?: string // optional link to the listing / source blueprint
   inventory: Inventory

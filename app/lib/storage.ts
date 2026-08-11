@@ -51,6 +51,10 @@ export function normalizePlan(parsed: Partial<Plan> | null | undefined): Plan {
     clearance: parsed.clearance === true,
     layers: validateLayerIds(parsed.layers),
     sunSeason: parsed.sunSeason === 'summer' || parsed.sunSeason === 'winter' ? parsed.sunSeason : 'equinox',
+    ghost:
+      parsed.ghost && Array.isArray(parsed.ghost.furniture)
+        ? { rooms: (parsed.ghost.rooms ?? []).map(safeColorField), furniture: (parsed.ghost.furniture ?? []).map(safeColorField) }
+        : undefined,
     budget: typeof parsed.budget === 'number' && parsed.budget > 0 ? parsed.budget : undefined,
     blueprintUrl: typeof parsed.blueprintUrl === 'string' ? parsed.blueprintUrl : undefined,
     width: parsed.width || 1200,
